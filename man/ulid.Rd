@@ -28,6 +28,32 @@ Instead, herein is proposed ULID:\preformatted{ulid() // 01ARZ3NDEKTSV4RRFFQ69G5
 \item Case insensitive
 \item No special characters (URL safe)
 \item Monotonic sort order (correctly detects and handles the same millisecond)
+}\preformatted{01AN4Z07BY      79KA1307SR9X4MV3
+
+|----------|    |----------------|
+  Timestamp          Randomness
+48bits             80bits
+}
+
+\strong{Components}
+
+\emph{Timestamp}
+\itemize{
+\item 48 bit integer
+\item UNIX-time in milliseconds
+\item Won't run out of space till the year 10889 AD.
+}
+
+\emph{Randomness}
+\itemize{
+\item 80 bits
+\item Cryptographically secure source of randomness, if possible
+}
+
+\strong{Sorting}
+
+The left-most character must be sorted first, and the right-most character sorted last (lexical order). The default ASCII character set must be used. Within the same millisecond, sort order is not guaranteed
+\itemize{
 \item URL: \url{https://gitlab.com/hrbrmstr/ulid}
 \item BugReports: \url{https://gitlab.com/hrbrmstr/ulid/issues}
 }

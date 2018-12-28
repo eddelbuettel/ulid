@@ -24,6 +24,29 @@
 #' - No special characters (URL safe)
 #' - Monotonic sort order (correctly detects and handles the same millisecond)
 #'
+#' ```
+#' 01AN4Z07BY      79KA1307SR9X4MV3
+#'
+#' |----------|    |----------------|
+#'   Timestamp          Randomness
+#' 48bits             80bits
+#' ```
+#'
+#' **Components**
+#'
+#' _Timestamp_
+#'   - 48 bit integer
+#' - UNIX-time in milliseconds
+#' - Won't run out of space till the year 10889 AD.
+#'
+#' _Randomness_
+#' - 80 bits
+#' - Cryptographically secure source of randomness, if possible
+#'
+#' **Sorting**
+#'
+#' The left-most character must be sorted first, and the right-most character sorted last (lexical order). The default ASCII character set must be used. Within the same millisecond, sort order is not guaranteed
+#'
 #' - URL: <https://gitlab.com/hrbrmstr/ulid>
 #' - BugReports: <https://gitlab.com/hrbrmstr/ulid/issues>
 #'
