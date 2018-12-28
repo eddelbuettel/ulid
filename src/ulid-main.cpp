@@ -4,9 +4,34 @@
 
 using namespace Rcpp;
 
+//' Generate ULIDs from timestamps
+//'
+//' This function generates a new [Universally Unique Lexicographically
+//' Sortable Identifier](https://github.com/ulid/spec) from a vector of
+//' `POSIXct` timestamps.
+//'
+//' @md
+//' @param tsv vector of `POSIXct` values
+//' @export
+//' @examples
+//' ts_generate(as.POSIXct("2017-11-01 15:00:00", origin="1970-01-01"))
+// [[Rcpp::export]]
+CharacterVector ts_generate(Rcpp::DatetimeVector tsv) {
+  CharacterVector c(tsv.size());
+  for (long i=0; i<tsv.size(); i++) {
+    ulid::ULID u = 0;
+    time_t t = static_cast<time_t>(tsv[i]);
+    ulid::EncodeTime(t, u);
+    ulid::EncodeEntropyRand(u);
+    c[i] = ulid::Marshal(u);
+  }
+  return(c);
+}
+
+
 //' Generate ULID
 //'
-//' [ULIDgenerate()] generates a new []Universally Unique Lexicographically
+//' [ULIDgenerate()] generates a new [Universally Unique Lexicographically
 //' Sortable Identifier](https://github.com/ulid/spec).
 //'
 //' @md
@@ -29,13 +54,14 @@ CharacterVector ULIDgenerate(long n=1) {
 //' @md
 //' @param ulids character ULIDs (e.g. created with [ULIDgenerate()])
 //' @export
+//' @return data frame (tibble)
 //' @examples
 //' unmarshal(ULIDgenerate())
 // [[Rcpp::export]]
 DataFrame unmarshal(std::vector<std::string> ulids) {
 
   unsigned long sz = ulids.size();
-  std::vector<Rcpp::Datetime> dt(sz);
+  Rcpp::DatetimeVector dt(sz);
   std::vector<std::string> cv(sz);
 
   for (unsigned long i=0; i<sz; i++) {

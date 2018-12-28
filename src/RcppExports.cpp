@@ -5,6 +5,17 @@
 
 using namespace Rcpp;
 
+// ts_generate
+CharacterVector ts_generate(Rcpp::DatetimeVector tsv);
+RcppExport SEXP _ulid_ts_generate(SEXP tsvSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::DatetimeVector >::type tsv(tsvSEXP);
+    rcpp_result_gen = Rcpp::wrap(ts_generate(tsv));
+    return rcpp_result_gen;
+END_RCPP
+}
 // ULIDgenerate
 CharacterVector ULIDgenerate(long n);
 RcppExport SEXP _ulid_ULIDgenerate(SEXP nSEXP) {
@@ -29,6 +40,7 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_ulid_ts_generate", (DL_FUNC) &_ulid_ts_generate, 1},
     {"_ulid_ULIDgenerate", (DL_FUNC) &_ulid_ULIDgenerate, 1},
     {"_ulid_unmarshal", (DL_FUNC) &_ulid_unmarshal, 1},
     {NULL, NULL, 0}
