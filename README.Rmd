@@ -59,7 +59,8 @@ The left-most character must be sorted first, and the right-most character sorte
 
 The following functions are implemented:
 
-- `ULIDgenerate`:  Generate a time-based ULID
+- `ULIDgenerate` / `generate` / `ulid_generate`:  Generate a time-based ULID
+- `ts_generate`:	Generate ULID from timestamps
 - `unmarshal`:	Unmarshal a ULID into a data frame with timestamp and random bitstring columns
 
 ## Installation
@@ -94,8 +95,16 @@ ulid::ULIDgenerate()
 (u <- ulid::ULIDgenerate(20))
 ```
 
-### Unmarshall
+### Unmarshal
 
 ```{r}
 unmarshal(u)
+```
+
+### Use defined timestamps
+
+```{r}
+(ut <- ts_generate(as.POSIXct("2017-11-01 15:00:00", origin="1970-01-01")))
+
+unmarshal(ut)
 ```

@@ -9,6 +9,9 @@ unmarshal(ulids)
 \arguments{
 \item{ulids}{character ULIDs (e.g. created with \code{\link[=ULIDgenerate]{ULIDgenerate()}})}
 }
+\value{
+data frame (tibble)
+}
 \description{
 Unmarshal a ULID into a data frame with timestamp and random bitstring columns
 }
