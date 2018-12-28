@@ -4,9 +4,30 @@
 \name{ulid}
 \alias{ulid}
 \alias{ulid-package}
-\title{...}
+\title{Generate Universally Unique Lexicographically Sortable Identifier}
 \description{
+(grifted from \url{https://github.com/ulid/spec})
+}
+\details{
+UUID can be suboptimal for many uses-cases because:
 \itemize{
+\item It isn't the most character efficient way of encoding 128 bits of randomness
+\item UUID v1/v2 is impractical in many environments, as it requires access to a unique, stable MAC address
+\item UUID v3/v5 requires a unique seed and produces randomly distributed IDs, which can cause fragmentation in many data structures
+\item UUID v4 provides no other information than randomness which can cause fragmentation in many data structures
+}
+
+Instead, herein is proposed ULID:\preformatted{ulid() // 01ARZ3NDEKTSV4RRFFQ69G5FAV
+}
+\itemize{
+\item 128-bit compatibility with UUID
+\item 1.21e+24 unique ULIDs per millisecond
+\item Lexicographically sortable!
+\item Canonically encoded as a 26 character string, as opposed to the 36 character UUID
+\item Uses Crockford's base32 for better efficiency and readability (5 bits per character)
+\item Case insensitive
+\item No special characters (URL safe)
+\item Monotonic sort order (correctly detects and handles the same millisecond)
 \item URL: \url{https://gitlab.com/hrbrmstr/ulid}
 \item BugReports: \url{https://gitlab.com/hrbrmstr/ulid/issues}
 }
