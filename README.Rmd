@@ -59,7 +59,8 @@ The left-most character must be sorted first, and the right-most character sorte
 
 The following functions are implemented:
 
-- `ULIDgenerate`: Generate a time-based ULID
+- `ULIDgenerate`:  Generate a time-based ULID
+- `unmarshal`:	Unmarshal a ULID into a data frame with timestamp and random bitstring columns
 
 ## Installation
 
@@ -90,6 +91,11 @@ ulid::ULIDgenerate()
 ### Many
 
 ```{r}
-ulid::ULIDgenerate(20)
+(u <- ulid::ULIDgenerate(20))
+```
 
+### Unmarshall
+
+```{r}
+unmarshal(u)
 ```

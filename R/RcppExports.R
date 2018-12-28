@@ -15,3 +15,14 @@ ULIDgenerate <- function(n = 1L) {
     .Call(`_ulid_ULIDgenerate`, n)
 }
 
+#' Unmarshal a ULID into a data frame with timestamp and random bitstring columns
+#'
+#' @md
+#' @param ulids character ULIDs (e.g. created with [ULIDgenerate()])
+#' @export
+#' @examples
+#' unmarshal(ULIDgenerate())
+unmarshal <- function(ulids) {
+    .Call(`_ulid_unmarshal`, ulids)
+}
+

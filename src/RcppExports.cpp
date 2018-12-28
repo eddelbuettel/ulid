@@ -16,9 +16,21 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// unmarshal
+DataFrame unmarshal(std::vector<std::string> ulids);
+RcppExport SEXP _ulid_unmarshal(SEXP ulidsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::vector<std::string> >::type ulids(ulidsSEXP);
+    rcpp_result_gen = Rcpp::wrap(unmarshal(ulids));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_ulid_ULIDgenerate", (DL_FUNC) &_ulid_ULIDgenerate, 1},
+    {"_ulid_unmarshal", (DL_FUNC) &_ulid_unmarshal, 1},
     {NULL, NULL, 0}
 };
 
