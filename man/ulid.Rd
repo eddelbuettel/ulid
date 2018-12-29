@@ -32,7 +32,7 @@ Instead, herein is proposed ULID:\preformatted{ulid() // 01ARZ3NDEKTSV4RRFFQ69G5
 
 |----------|    |----------------|
   Timestamp          Randomness
-48bits             80bits
+   48bits              80bits
 }
 
 \strong{Components}
@@ -52,7 +52,8 @@ Instead, herein is proposed ULID:\preformatted{ulid() // 01ARZ3NDEKTSV4RRFFQ69G5
 
 \strong{Sorting}
 
-The left-most character must be sorted first, and the right-most character sorted last (lexical order). The default ASCII character set must be used. Within the same millisecond, sort order is not guaranteed
+The left-most character must be sorted first, and the right-most character sorted last (lexical order).
+The default ASCII character set must be used. Within the same millisecond, sort order is not guaranteed.
 \itemize{
 \item URL: \url{https://gitlab.com/hrbrmstr/ulid}
 \item BugReports: \url{https://gitlab.com/hrbrmstr/ulid/issues}
