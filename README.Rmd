@@ -53,7 +53,7 @@ ulid() // 01ARZ3NDEKTSV4RRFFQ69G5FAV
 
 ### Sorting
 
-The left-most character must be sorted first, and the right-most character sorted last (lexical order). The default ASCII character set must be used. Within the same millisecond, sort order is not guaranteed
+The left-most character must be sorted first, and the right-most character sorted last (lexical order). The default ASCII character set must be used. Within the same millisecond, sort order is not guaranteed.
 
 ## What's Inside The Tin
 
@@ -107,4 +107,10 @@ unmarshal(u)
 (ut <- ts_generate(as.POSIXct("2017-11-01 15:00:00", origin="1970-01-01")))
 
 unmarshal(ut)
+```
+
+## Package Code Metrics
+
+```{r}
+cloc::cloc_pkg_md()
 ```

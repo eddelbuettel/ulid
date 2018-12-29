@@ -4,14 +4,14 @@
 #'
 #' UUID can be suboptimal for many uses-cases because:
 #'
-#'   - It isn't the most character efficient way of encoding 128 bits of randomness
+#' - It isn't the most character efficient way of encoding 128 bits of randomness
 #' - UUID v1/v2 is impractical in many environments, as it requires access to a unique, stable MAC address
 #' - UUID v3/v5 requires a unique seed and produces randomly distributed IDs, which can cause fragmentation in many data structures
 #' - UUID v4 provides no other information than randomness which can cause fragmentation in many data structures
 #'
 #' Instead, herein is proposed ULID:
 #'
-#' ```javascript
+#' ```
 #' ulid() // 01ARZ3NDEKTSV4RRFFQ69G5FAV
 #' ```
 #'
@@ -29,13 +29,13 @@
 #'
 #' |----------|    |----------------|
 #'   Timestamp          Randomness
-#' 48bits             80bits
+#'    48bits              80bits
 #' ```
 #'
 #' **Components**
 #'
 #' _Timestamp_
-#'   - 48 bit integer
+#' - 48 bit integer
 #' - UNIX-time in milliseconds
 #' - Won't run out of space till the year 10889 AD.
 #'
@@ -45,7 +45,8 @@
 #'
 #' **Sorting**
 #'
-#' The left-most character must be sorted first, and the right-most character sorted last (lexical order). The default ASCII character set must be used. Within the same millisecond, sort order is not guaranteed
+#' The left-most character must be sorted first, and the right-most character sorted last (lexical order).
+#' The default ASCII character set must be used. Within the same millisecond, sort order is not guaranteed.
 #'
 #' - URL: <https://gitlab.com/hrbrmstr/ulid>
 #' - BugReports: <https://gitlab.com/hrbrmstr/ulid/issues>
