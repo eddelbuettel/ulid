@@ -28,6 +28,12 @@ CharacterVector ts_generate(Rcpp::DatetimeVector tsv) {
   return(c);
 }
 
+inline long intrand() {
+  GetRNGstate();
+  long ret = (long)(unif_rand()*RAND_MAX);
+  PutRNGstate();
+  return(ret);
+}
 
 //' Generate ULID
 //'

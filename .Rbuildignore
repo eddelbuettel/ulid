@@ -12,3 +12,4 @@
 ^tmp$
 ^notes$
 ^\.gitlab-ci\.yml$
+^appveyor\.yml$
