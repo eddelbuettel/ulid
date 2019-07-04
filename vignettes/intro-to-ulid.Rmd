@@ -1,0 +1,45 @@
+---
+title: "Introduction to {ulid}"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to {ulid}}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(ulid)
+```
+
+### One
+
+```{r}
+ulid::ULIDgenerate()
+```
+
+### Many
+
+```{r}
+(u <- ulid::ULIDgenerate(20))
+```
+
+### Unmarshal
+
+```{r}
+unmarshal(u)
+```
+
+### Use defined timestamps
+
+```{r}
+(ut <- ts_generate(as.POSIXct("2017-11-01 15:00:00", origin="1970-01-01")))
+
+unmarshal(ut)
+```

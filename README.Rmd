@@ -2,6 +2,11 @@
 output: rmarkdown::github_document
 ---
 
+[![Travis-CI Build Status](https://travis-ci.org/hrbrmstr/ulid.svg?branch=master)](https://travis-ci.org/hrbrmstr/ulid) 
+[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/hrbrmstr/ulid?branch=master&svg=true)](https://ci.appveyor.com/project/hrbrmstr/ulid) 
+[![Coverage Status](https://codecov.io/gh/hrbrmstr/ulid/branch/master/graph/badge.svg)](https://codecov.io/gh/hrbrmstr/ulid)
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/ulid)](https://cran.r-project.org/package=ulid)
+
 # ulid
 
 Universally Unique Lexicographically Sortable Identifier
@@ -65,8 +70,8 @@ The following functions are implemented:
 
 ## Installation
 
-```{r eval=FALSE}
-devtools::install_github("hrbrmstr/ulid")
+```{r nstall-ex, results='asis', echo = FALSE}
+hrbrpkghelpr::install_block()
 ```
 
 ```{r message=FALSE, warning=FALSE, error=FALSE, include=FALSE}
