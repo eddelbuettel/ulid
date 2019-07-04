@@ -9,7 +9,7 @@ output: rmarkdown::github_document
 
 # ulid
 
-Universally Unique Lexicographically Sortable Identifier
+Universally Unique Lexicographically Sortable Identifiers
 
 ## Description
 

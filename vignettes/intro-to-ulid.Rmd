@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-## UUID : Universally Unique Lexicographically Sortable Identifier
+## UUID : Universally Unique Lexicographically Sortable Identifiers
 
 UUID can be suboptimal for many uses-cases because:
 

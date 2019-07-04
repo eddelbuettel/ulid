@@ -1,4 +1,4 @@
-#' Generate Universally Unique Lexicographically Sortable Identifier
+#' Generate Universally Unique Lexicographically Sortable Identifiers
 #'
 #' (grifted from <https://github.com/ulid/spec>)
 #'
