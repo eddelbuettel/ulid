@@ -1,6 +1,6 @@
 Package: ulid
 Type: Package
-Title: Generate Universally Unique Lexicographically Sortable Identifier
+Title: Generate Universally Unique Lexicographically Sortable Identifiers
 Version: 0.3.0
 Date: 2019-07-04
 Authors@R: c( person("Bob", "Rudis", email = "bob@rud.is", role =
@@ -17,7 +17,7 @@ Description: Universally unique identifiers ('UUIDs') can be suboptimal
         fragmentation in many data structures; v4 provides no other
         information than randomness which can cause fragmentation in many
         data structures. 'ULIDs' (<https://github.com/ulid/spec>) have
-        128-bit compatibility with 'UUID', 1.21e+24 unique ULIDs per
+        128-bit compatibility with 'UUID', 1.21e+24 unique 'ULIDs' per
         millisecond, are lexicographically sortable, canonically encoded
         as a 26 character string, as opposed to the 36 character 'UUID',
         use Crockford's 'base32' for better efficiency and readability (5

@@ -4,7 +4,7 @@
 \name{ulid}
 \alias{ulid}
 \alias{ulid-package}
-\title{Generate Universally Unique Lexicographically Sortable Identifier}
+\title{Generate Universally Unique Lexicographically Sortable Identifiers}
 \description{
 (grifted from \url{https://github.com/ulid/spec})
 }
