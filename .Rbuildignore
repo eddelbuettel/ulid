@@ -13,3 +13,4 @@
 ^notes$
 ^\.gitlab-ci\.yml$
 ^appveyor\.yml$
+^\.vscode$

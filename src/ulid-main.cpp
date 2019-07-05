@@ -18,7 +18,7 @@ using namespace Rcpp;
 // [[Rcpp::export]]
 CharacterVector ts_generate(Rcpp::DatetimeVector tsv) {
   CharacterVector c(tsv.size());
-  for (long i=0; i<tsv.size(); i++) {
+  for (R_xlen_t i=0; i<tsv.size(); i++) {
     ulid::ULID u = 0;
     time_t t = static_cast<time_t>(tsv[i]);
     ulid::EncodeTime(t, u);
@@ -46,9 +46,9 @@ inline long intrand() {
 //' @examples
 //' ULIDgenerate()
 // [[Rcpp::export]]
-CharacterVector ULIDgenerate(long n=1) {
+CharacterVector ULIDgenerate(R_xlen_t n=1) {
   CharacterVector c(n);
-  for (long i=0; i<=(n-1); i++) {
+  for (R_xlen_t i=0; i<=(n-1); i++) {
     c[i] = ulid::Marshal(ulid::CreateNowRand());
   }
   return(c);

@@ -17,12 +17,12 @@ BEGIN_RCPP
 END_RCPP
 }
 // ULIDgenerate
-CharacterVector ULIDgenerate(long n);
+CharacterVector ULIDgenerate(R_xlen_t n);
 RcppExport SEXP _ulid_ULIDgenerate(SEXP nSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< long >::type n(nSEXP);
+    Rcpp::traits::input_parameter< R_xlen_t >::type n(nSEXP);
     rcpp_result_gen = Rcpp::wrap(ULIDgenerate(n));
     return rcpp_result_gen;
 END_RCPP
