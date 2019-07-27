@@ -1,11 +1,15 @@
 ---
 output: rmarkdown::github_document
+editor_options: 
+  chunk_output_type: console
 ---
+```{r pkg-knitr-opts, include=FALSE}
+hrbrpkghelpr::global_opts()
+```
 
-[![Travis-CI Build Status](https://travis-ci.org/hrbrmstr/ulid.svg?branch=master)](https://travis-ci.org/hrbrmstr/ulid) 
-[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/hrbrmstr/ulid?branch=master&svg=true)](https://ci.appveyor.com/project/hrbrmstr/ulid) 
-[![Coverage Status](https://codecov.io/gh/hrbrmstr/ulid/branch/master/graph/badge.svg)](https://codecov.io/gh/hrbrmstr/ulid)
-[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/ulid)](https://cran.r-project.org/package=ulid)
+```{r badges, results='asis', echo=FALSE, cache=FALSE}
+hrbrpkghelpr::stinking_badges()
+```
 
 # ulid
 
@@ -64,18 +68,14 @@ The left-most character must be sorted first, and the right-most character sorte
 
 The following functions are implemented:
 
-- `ULIDgenerate` / `generate` / `ulid_generate`:  Generate a time-based ULID
-- `ts_generate`:	Generate ULID from timestamps
-- `unmarshal`:	Unmarshal a ULID into a data frame with timestamp and random bitstring columns
+```{r ingredients, results='asis', echo=FALSE, cache=FALSE}
+hrbrpkghelpr::describe_ingredients()
+```
 
 ## Installation
 
-```{r nstall-ex, results='asis', echo = FALSE}
+```{r install-ex, results='asis', echo=FALSE, cache=FALSE}
 hrbrpkghelpr::install_block()
-```
-
-```{r message=FALSE, warning=FALSE, error=FALSE, include=FALSE}
-options(width=120)
 ```
 
 ## Usage
@@ -114,8 +114,12 @@ unmarshal(u)
 unmarshal(ut)
 ```
 
-## Package Code Metrics
+## ulid Code Metrics
 
 ```{r}
 cloc::cloc_pkg_md()
 ```
+
+## Code of Conduct
+
+Please note that this project is released with a Contributor Code of Conduct. By participating in this project you agree to abide by its terms.

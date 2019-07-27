@@ -1,11 +1,24 @@
 
-[![Travis-CI Build
+[![Project Status: Active – The project has reached a stable, usable
+state and is being actively
+developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![Signed
+by](https://img.shields.io/badge/Keybase-Verified-brightgreen.svg)](https://keybase.io/hrbrmstr)
+![Signed commit
+%](https://img.shields.io/badge/Signed_Commits-90.0%25-lightgrey.svg)
+[![Linux build
 Status](https://travis-ci.org/hrbrmstr/ulid.svg?branch=master)](https://travis-ci.org/hrbrmstr/ulid)
-[![AppVeyor build
-status](https://ci.appveyor.com/api/projects/status/github/hrbrmstr/ulid?branch=master&svg=true)](https://ci.appveyor.com/project/hrbrmstr/ulid)
+[![Windows build
+status](https://ci.appveyor.com/api/projects/status/github/hrbrmstr/ulid?svg=true)](https://ci.appveyor.com/project/hrbrmstr/ulid)
 [![Coverage
 Status](https://codecov.io/gh/hrbrmstr/ulid/branch/master/graph/badge.svg)](https://codecov.io/gh/hrbrmstr/ulid)
-[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/ulid)](https://cran.r-project.org/package=ulid)
+[![cran
+checks](https://cranchecks.info/badges/worst/ulid)](https://cranchecks.info/pkgs/ulid)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/ulid)](https://www.r-pkg.org/pkg/ulid)
+![Minimal R
+Version](https://img.shields.io/badge/R%3E%3D-3.2.0-blue.svg)
+![License](https://img.shields.io/badge/License-MIT-blue.svg)
 
 # ulid
 
@@ -72,9 +85,8 @@ must be used. Within the same millisecond, sort order is not guaranteed.
 
 The following functions are implemented:
 
-  - `ULIDgenerate` / `generate` / `ulid_generate`: Generate a time-based
-    ULID
-  - `ts_generate`: Generate ULID from timestamps
+  - `ts_generate`: Generate ULIDs from timestamps
+  - `ULIDgenerate`: Generate ULID
   - `unmarshal`: Unmarshal a ULID into a data frame with timestamp and
     random bitstring columns
 
@@ -83,16 +95,19 @@ The following functions are implemented:
 ``` r
 install.packages("ulid", repos = "https://cinc.rud.is")
 # or
-devtools::install_git("https://git.rud.is/hrbrmstr/ulid.git")
+remotes::install_git("https://git.rud.is/hrbrmstr/ulid.git")
 # or
-devtools::install_git("https://git.sr.ht/~hrbrmstr/ulid")
+remotes::install_git("https://git.sr.ht/~hrbrmstr/ulid")
 # or
-devtools::install_gitlab("hrbrmstr/ulid")
+remotes::install_gitlab("hrbrmstr/ulid")
 # or
-devtools::install_bitbucket("hrbrmstr/ulid")
+remotes::install_bitbucket("hrbrmstr/ulid")
 # or
-devtools::install_github("hrbrmstr/ulid")
+remotes::install_github("hrbrmstr/ulid")
 ```
+
+NOTE: To use the ‘remotes’ install options you will need to have the
+[{remotes} package](https://github.com/r-lib/remotes) installed.
 
 ## Usage
 
@@ -101,74 +116,66 @@ library(ulid)
 
 # current verison
 packageVersion("ulid")
+## [1] '0.3.0'
 ```
-
-    ## [1] '0.3.0'
 
 ### One
 
 ``` r
 ulid::ULIDgenerate()
+## [1] "0001EKRG9Z3CR2GXQG3MCN7R8T"
 ```
-
-    ## [1] "0001EHX2TS3FANDH25PE5CT843"
 
 ### Many
 
 ``` r
 (u <- ulid::ULIDgenerate(20))
+##  [1] "0001EKRG9Z9G02VMWAJPN6RTST" "0001EKRG9ZTEVMMA961V1PSH56" "0001EKRG9ZBK7SVA6W2YGKNM66" "0001EKRG9ZN5M21HPD49YY1GYF"
+##  [5] "0001EKRG9ZF74J6RYS68QF1NGX" "0001EKRG9ZS7TPM10KKHCKNCZ5" "0001EKRG9ZBGGFSGE1EAM2F13M" "0001EKRG9Z2DQ9R0ZX907VXYZW"
+##  [9] "0001EKRG9ZYAYCB3SC72P3F5ZE" "0001EKRG9Z8KZ1NC97DQT9CM9K" "0001EKRG9Z0TTWPCAAZ74XN9G3" "0001EKRG9Z7RBF3WJ63RG3JEMP"
+## [13] "0001EKRG9Z1BW9WXS6H0M9E7R2" "0001EKRG9Z0PJTW7V4X030HDG0" "0001EKRG9ZG79SSF47HM064N50" "0001EKRG9Z6E260CXJ0MSSJM9J"
+## [17] "0001EKRG9ZM0AHQ5PZMWHNP5P3" "0001EKRG9ZBMWP7JJQ86PVTDGT" "0001EKRG9Z49YK1FK9H8DMYX12" "0001EKRG9ZVSCHBCMN344AAFKQ"
 ```
-
-    ##  [1] "0001EHX2TSMATE28BM0P9P4ZT7" "0001EHX2TSQ07QG90YYBCCGVRH" "0001EHX2TS3QJ5X4JA9WVDZCTM" "0001EHX2TSJRXPB6F8C8FQRCVN"
-    ##  [5] "0001EHX2TSKPY54201E740DZGP" "0001EHX2TSNERDHBA5WW6JVHV7" "0001EHX2TS8PSY34CSC9J0FRBZ" "0001EHX2TS20FZ80A0H1JXH2HJ"
-    ##  [9] "0001EHX2TSVM253MAWW6GY2VS7" "0001EHX2TSCR0AWQKH6NNXSYAM" "0001EHX2TSWAZDQ9E87PBEG4AG" "0001EHX2TS6WHF11YM851XMWXC"
-    ## [13] "0001EHX2TSS52C9F7RG4BH39ME" "0001EHX2TSEPB58N4M551QFGCS" "0001EHX2TSZC15E2F729MS59AB" "0001EHX2TST95FS48CAFBYVG8S"
-    ## [17] "0001EHX2TSQQ9QYG7YMY5VDXBC" "0001EHX2TSKBET2J6ZQ7YGJ3FT" "0001EHX2TSJW2JNK61RQ8JSSNA" "0001EHX2TSV4CV21CTVNAAQE4V"
 
 ### Unmarshal
 
 ``` r
 unmarshal(u)
+##                     ts              rnd
+## 1  2019-07-27 08:19:11 9G02VMWAJPN6RTST
+## 2  2019-07-27 08:19:11 TEVMMA961V1PSH56
+## 3  2019-07-27 08:19:11 BK7SVA6W2YGKNM66
+## 4  2019-07-27 08:19:11 N5M21HPD49YY1GYF
+## 5  2019-07-27 08:19:11 F74J6RYS68QF1NGX
+## 6  2019-07-27 08:19:11 S7TPM10KKHCKNCZ5
+## 7  2019-07-27 08:19:11 BGGFSGE1EAM2F13M
+## 8  2019-07-27 08:19:11 2DQ9R0ZX907VXYZW
+## 9  2019-07-27 08:19:11 YAYCB3SC72P3F5ZE
+## 10 2019-07-27 08:19:11 8KZ1NC97DQT9CM9K
+## 11 2019-07-27 08:19:11 0TTWPCAAZ74XN9G3
+## 12 2019-07-27 08:19:11 7RBF3WJ63RG3JEMP
+## 13 2019-07-27 08:19:11 1BW9WXS6H0M9E7R2
+## 14 2019-07-27 08:19:11 0PJTW7V4X030HDG0
+## 15 2019-07-27 08:19:11 G79SSF47HM064N50
+## 16 2019-07-27 08:19:11 6E260CXJ0MSSJM9J
+## 17 2019-07-27 08:19:11 M0AHQ5PZMWHNP5P3
+## 18 2019-07-27 08:19:11 BMWP7JJQ86PVTDGT
+## 19 2019-07-27 08:19:11 49YK1FK9H8DMYX12
+## 20 2019-07-27 08:19:11 VSCHBCMN344AAFKQ
 ```
-
-    ##                     ts              rnd
-    ## 1  2019-07-04 19:27:21 MATE28BM0P9P4ZT7
-    ## 2  2019-07-04 19:27:21 Q07QG90YYBCCGVRH
-    ## 3  2019-07-04 19:27:21 3QJ5X4JA9WVDZCTM
-    ## 4  2019-07-04 19:27:21 JRXPB6F8C8FQRCVN
-    ## 5  2019-07-04 19:27:21 KPY54201E740DZGP
-    ## 6  2019-07-04 19:27:21 NERDHBA5WW6JVHV7
-    ## 7  2019-07-04 19:27:21 8PSY34CSC9J0FRBZ
-    ## 8  2019-07-04 19:27:21 20FZ80A0H1JXH2HJ
-    ## 9  2019-07-04 19:27:21 VM253MAWW6GY2VS7
-    ## 10 2019-07-04 19:27:21 CR0AWQKH6NNXSYAM
-    ## 11 2019-07-04 19:27:21 WAZDQ9E87PBEG4AG
-    ## 12 2019-07-04 19:27:21 6WHF11YM851XMWXC
-    ## 13 2019-07-04 19:27:21 S52C9F7RG4BH39ME
-    ## 14 2019-07-04 19:27:21 EPB58N4M551QFGCS
-    ## 15 2019-07-04 19:27:21 ZC15E2F729MS59AB
-    ## 16 2019-07-04 19:27:21 T95FS48CAFBYVG8S
-    ## 17 2019-07-04 19:27:21 QQ9QYG7YMY5VDXBC
-    ## 18 2019-07-04 19:27:21 KBET2J6ZQ7YGJ3FT
-    ## 19 2019-07-04 19:27:21 JW2JNK61RQ8JSSNA
-    ## 20 2019-07-04 19:27:21 V4CV21CTVNAAQE4V
 
 ### Use defined timestamps
 
 ``` r
 (ut <- ts_generate(as.POSIXct("2017-11-01 15:00:00", origin="1970-01-01")))
-```
+## [1] "0001CZM6DGXNMVPCQG0B295F3S"
 
-    ## [1] "0001CZM6DGX836E94E630NTNNB"
-
-``` r
 unmarshal(ut)
+##                    ts              rnd
+## 1 2017-11-01 15:00:00 XNMVPCQG0B295F3S
 ```
 
-    ##                    ts              rnd
-    ## 1 2017-11-01 15:00:00 X836E94E630NTNNB
-
-## Package Code Metrics
+## ulid Code Metrics
 
 ``` r
 cloc::cloc_pkg_md()
@@ -176,7 +183,13 @@ cloc::cloc_pkg_md()
 
 | Lang         | \# Files |  (%) | LoC |  (%) | Blank lines |  (%) | \# Lines |  (%) |
 | :----------- | -------: | ---: | --: | ---: | ----------: | ---: | -------: | ---: |
-| C/C++ Header |        3 | 0.27 | 763 | 0.86 |         238 | 0.72 |      302 | 0.53 |
-| C++          |        2 | 0.18 |  87 | 0.10 |          22 | 0.07 |       37 | 0.07 |
-| Rmd          |        2 | 0.18 |  20 | 0.02 |          65 | 0.20 |      136 | 0.24 |
-| R            |        4 | 0.36 |  15 | 0.02 |           7 | 0.02 |       94 | 0.17 |
+| C/C++ Header |        3 | 0.27 | 763 | 0.86 |         238 | 0.71 |      302 | 0.53 |
+| C++          |        2 | 0.18 |  87 | 0.10 |          22 | 0.07 |       37 | 0.06 |
+| Rmd          |        2 | 0.18 |  22 | 0.02 |          66 | 0.20 |      137 | 0.24 |
+| R            |        4 | 0.36 |  15 | 0.02 |           7 | 0.02 |       94 | 0.16 |
+
+## Code of Conduct
+
+Please note that this project is released with a Contributor Code of
+Conduct. By participating in this project you agree to abide by its
+terms.

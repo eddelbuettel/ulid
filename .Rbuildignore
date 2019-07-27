@@ -6,6 +6,7 @@
 ^README\.*html$
 ^NOTES\.*Rmd$
 ^NOTES\.*html$
+^README\.md$
 ^\.codecov\.yml$
 ^README_files$
 ^doc$
@@ -13,3 +14,6 @@
 ^notes$
 ^\.gitlab-ci\.yml$
 ^appveyor\.yml$
+^cran-comments\.md$
+^CRAN-RELEASE$
+^CODE_OF_CONDUCT\.md$
