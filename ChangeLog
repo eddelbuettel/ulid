@@ -1,0 +1,7 @@
+2024-03-31  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Authors@R): New maintainer
+
+	* *: A number of files have been removed making the package smaller
+	and lighter, a few URLs have been updated to the new repo, manual
+	pages have been aligned, new alias ulid() added

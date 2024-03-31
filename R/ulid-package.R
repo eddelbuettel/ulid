@@ -1,6 +1,9 @@
+#' @title
 #' Generate Universally Unique Lexicographically Sortable Identifiers
 #'
-#' (grifted from <https://github.com/ulid/spec>)
+#' @description
+#' As described in the [ulid specification repo](https://github.com/ulid/spec), and slightly edited here,
+#' UUID use can be suboptimal for many uses-cases because:(grifted from <https://github.com/ulid/spec>)
 #'
 #' UUID can be suboptimal for many uses-cases because:
 #'
@@ -9,11 +12,13 @@
 #' - UUID v3/v5 requires a unique seed and produces randomly distributed IDs, which can cause fragmentation in many data structures
 #' - UUID v4 provides no other information than randomness which can cause fragmentation in many data structures
 #'
-#' Instead, herein is proposed ULID:
+#' Instead, an alternative is proposed in ULID:
 #'
 #' ```
 #' ulid() // 01ARZ3NDEKTSV4RRFFQ69G5FAV
 #' ```
+#'
+#' with the following properties:
 #'
 #' - 128-bit compatibility with UUID
 #' - 1.21e+24 unique ULIDs per millisecond
@@ -37,7 +42,7 @@
 #' _Timestamp_
 #' - 48 bit integer
 #' - UNIX-time in milliseconds
-#' - Won't run out of space till the year 10889 AD.
+#' - Will not run out of space until the year 10889 AD.
 #'
 #' _Randomness_
 #' - 80 bits
@@ -48,13 +53,24 @@
 #' The left-most character must be sorted first, and the right-most character sorted last (lexical order).
 #' The default ASCII character set must be used. Within the same millisecond, sort order is not guaranteed.
 #'
-#' - URL: <https://gitlab.com/hrbrmstr/ulid>
-#' - BugReports: <https://gitlab.com/hrbrmstr/ulid/issues>
-#'
 #' @md
 #' @name ulid
-#' @docType package
-#' @author Bob Rudis (bob@@rud.is)
+#' @author Bob Rudis (bob@@rud.is) wrote the package based on `ulid` C++ library by Suyash Verma.
+#'
+#' Dirk Eddelbuettel now maintains the package.
 #' @useDynLib ulid, .registration = TRUE
-#' @importFrom Rcpp sourceCpp
-NULL
+#' @importFrom Rcpp evalCpp
+#' @seealso The [ulid specification](https://github.com/ulid/spec) provides the reference.
+"_PACKAGE"
+
+#' @rdname ulid
+#' @export
+ulid <- generate
+
+#' @rdname ulid
+#' @export
+ulid_generate <- generate
+
+#' @rdname ulid
+#' @export
+ULIDgenerate <- generate
