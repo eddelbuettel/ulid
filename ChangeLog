@@ -5,3 +5,6 @@
 	* *: A number of files have been removed making the package smaller
 	and lighter, a few URLs have been updated to the new repo, manual
 	pages have been aligned, new alias ulid() added
+
+	* local/patches/ulid_0.3.0.patch: Document patch needed for CRAN
+	compliance in case upstream changes again and we need to back his out
