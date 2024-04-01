@@ -1,6 +1,6 @@
 #include <Rcpp/Lightest>
 
-#include "ulid.h"
+#include "ulid/ulid.h"
 
 inline long intrand() {
     GetRNGstate();
