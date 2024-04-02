@@ -3,7 +3,7 @@
 \newcommand{\ghpr}{\href{https://github.com/eddelbuettel/ulid/pull/#1}{##1}}
 \newcommand{\ghit}{\href{https://github.com/eddelbuettel/ulid/issues/#1}{##1}}
 
-\section{Changes in version 0.4.0 (2024-04-xx)}{
+\section{Changes in version 0.3.1 (2024-04-02)}{
   \itemize{
     \item New Maintainer
     \item Deleted several repository files no longer used or needed
@@ -15,6 +15,8 @@
     \item Updated / edited roxygen and README.md documention
     \item Removed vignette which was identical to README.md
     \item Switched continuous integration to GitHub Actions
+    \item Placed upstream (header-only) library into \code{src/ulid/}
+    \item Renamed single interface file to \code{src/wrapper}
   }
 }
 
