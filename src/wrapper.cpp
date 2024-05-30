@@ -11,9 +11,13 @@ inline long intrand() {
 
 //' Generate ULID
 //'
-//' [generate()] generates a new [Universally Unique Lexicographically
+//' `generate()` generates a new [Universally Unique Lexicographically
 //' Sortable Identifier](https://github.com/ulid/spec). Several aliases are
 //' available for convience and backwards-compatibility.
+//'
+//' Note that the current implementations has a limitation that results in
+//' second rather than millisecond resolution. See for example issue #13 at
+//' the upstream repo.
 //'
 //' @md
 //' @param n number of id's to generate (default = `1`)
@@ -34,12 +38,12 @@ Rcpp::CharacterVector generate(long n=1) {
 //' Unmarshal a ULID into a data frame with timestamp and random bitstring columns
 //'
 //' @md
-//' @param ulids character ULIDs (e.g. created with [ULIDgenerate()])
+//' @param ulids character ULIDs (e.g. created with `generate()`)
 //' @export
 //' @rdname ulid
-//' @return data frame (tibble)
+//' @return A `data.frame` with two columns `ts` and `rnd`.
 //' @examples
-//' unmarshal(ULIDgenerate())
+//' unmarshal(generate())
 // [[Rcpp::export]]
 Rcpp::DataFrame unmarshal(std::vector<std::string> ulids) {
     unsigned long sz = ulids.size();

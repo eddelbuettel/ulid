@@ -3,8 +3,9 @@
 
 [![CI](https://github.com/eddelbuettel/ulid/actions/workflows/ci.yaml/badge.svg)](https://github.com/eddelbuettel/ulid/actions/workflows/ci.yaml)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/license/mit)
-[![CRAN](https://www.r-pkg.org/badges/version/ulid)](https://www.r-pkg.org/pkg/ulid)
+[![CRAN](https://www.r-pkg.org/badges/version/ulid)](https://cran.r-project.org/package=ulid)
 [![r-universe](https://eddelbuettel.r-universe.dev/badges/ulid)](https://eddelbuettel.r-universe.dev/ulid)
+[![Dependencies](https://tinyverse.netlify.app/badge/ulid)](https://cran.r-project.org/package=ulid)
 [![Last Commit](https://img.shields.io/github/last-commit/eddelbuettel/ulid)](https://github.com/eddelbuettel/ulid)
 
 
@@ -79,7 +80,8 @@ Development versions can also be installed from this repository or from
 [r-universe](https://eddelbuettel.r-universe.dev/ulid) via
 
 ```r
-install.packages('ulid', repos = c('https://eddelbuettel.r-universe.dev', 'https://cloud.r-project.org'))
+r <- c('https://eddelbuettel.r-universe.dev', 'https://cloud.r-project.org')
+install.packages('ulid', repos = r)
 ```
 
 ### Usage
@@ -89,12 +91,15 @@ ulid::ULIDgenerate()
 ## [1] "0001EKRGEEV98QP062VNRX31P2"
 
 (u <- ulid::ULIDgenerate(20))
-##  [1] "0001EKRGEEV5XMP54RRRWAK318" "0001EKRGEEKX7VC0PF75AZJXHP" "0001EKRGEEXENNCQEH4KCH8QAD"
-##  [4] "0001EKRGEEY41HJ6GMXRV1BQBA" "0001EKRGEE6HVD7ACWZ52MTVCJ" "0001EKRGEEQWXMPXGC0DGQN32B"
-##  [7] "0001EKRGEE6W13BK92EF1RXYT7" "0001EKRGEE5A31H38NJFGTK8PC" "0001EKRGEEG2GXS53QY9F3M0A9"
-## [10] "0001EKRGEEDA3Y6Y0T52WTS6RM" "0001EKRGEE5WS2S3D9KY3F5H9Y" "0001EKRGEE24SZW5NATAADAY9Q"
-## [13] "0001EKRGEEBEG51QCKXPM8ZS16" "0001EKRGEE1ZC1QY7RCJR9VJ0B" "0001EKRGEECJ50Z4FXM4HW6XWG"
-## [16] "0001EKRGEEER84JP8WTXV5DWV8" "0001EKRGEEW3ABA82GZSRXN1RB" "0001EKRGEEAA60CYFGR8832JD6"
+##  [1] "0001EKRGEEV5XMP54RRRWAK318" "0001EKRGEEKX7VC0PF75AZJXHP"
+##  [3] "0001EKRGEEXENNCQEH4KCH8QAD" "0001EKRGEEY41HJ6GMXRV1BQBA"
+##  [5] "0001EKRGEE6HVD7ACWZ52MTVCJ" "0001EKRGEEQWXMPXGC0DGQN32B"
+##  [7] "0001EKRGEE6W13BK92EF1RXYT7" "0001EKRGEE5A31H38NJFGTK8PC"
+##  [9] "0001EKRGEEG2GXS53QY9F3M0A9" "0001EKRGEEDA3Y6Y0T52WTS6RM"
+## [11] "0001EKRGEE5WS2S3D9KY3F5H9Y" "0001EKRGEE24SZW5NATAADAY9Q"
+## [13] "0001EKRGEEBEG51QCKXPM8ZS16" "0001EKRGEE1ZC1QY7RCJR9VJ0B"
+## [15] "0001EKRGEECJ50Z4FXM4HW6XWG" "0001EKRGEEER84JP8WTXV5DWV8"
+## [17] "0001EKRGEEW3ABA82GZSRXN1RB" "0001EKRGEEAA60CYFGR8832JD6"
 ## [19] "0001EKRGEE6W5ARCFHH6T75FPZ" "0001EKRGEE5WT4XNP7NS69BM3X"
 
 unmarshal(u)
@@ -127,6 +132,11 @@ unmarshal(ut)
 ##                    ts              rnd
 ## 1 2017-11-01 15:00:00 2THKSAX3F1SF30E7
 ```
+
+### Known Limitation
+
+As per [issue #13](https://github.com/suyash/ulid/issues/13) on the upstream repo, time is actually
+encoded mostly as `time_t` leading to second rather than millisecond resolution.
 
 ### Author
 

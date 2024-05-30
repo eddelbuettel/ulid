@@ -11,7 +11,7 @@ Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
 // generate
-CharacterVector generate(long n);
+Rcpp::CharacterVector generate(long n);
 RcppExport SEXP _ulid_generate(SEXP nSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
@@ -22,7 +22,7 @@ BEGIN_RCPP
 END_RCPP
 }
 // unmarshal
-DataFrame unmarshal(std::vector<std::string> ulids);
+Rcpp::DataFrame unmarshal(std::vector<std::string> ulids);
 RcppExport SEXP _ulid_unmarshal(SEXP ulidsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
@@ -33,7 +33,7 @@ BEGIN_RCPP
 END_RCPP
 }
 // ts_generate
-CharacterVector ts_generate(Rcpp::DatetimeVector tsv);
+Rcpp::CharacterVector ts_generate(Rcpp::DatetimeVector tsv);
 RcppExport SEXP _ulid_ts_generate(SEXP tsvSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;

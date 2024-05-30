@@ -26,15 +26,15 @@ ULIDgenerate(n = 1L)
 \arguments{
 \item{n}{number of id's to generate (default = \code{1})}
 
-\item{ulids}{character ULIDs (e.g. created with \code{\link[=ULIDgenerate]{ULIDgenerate()}})}
+\item{ulids}{character ULIDs (e.g. created with \code{generate()})}
 
 \item{tsv}{vector of \code{POSIXct} values}
 }
 \value{
-data frame (tibble)
+A \code{data.frame} with two columns \code{ts} and \code{rnd}.
 }
 \description{
-\code{\link[=generate]{generate()}} generates a new \href{https://github.com/ulid/spec}{Universally Unique Lexicographically Sortable Identifier}. Several aliases are
+\code{generate()} generates a new \href{https://github.com/ulid/spec}{Universally Unique Lexicographically Sortable Identifier}. Several aliases are
 available for convience and backwards-compatibility.
 
 This function generates a new \href{https://github.com/ulid/spec}{Universally Unique Lexicographically Sortable Identifier} from a vector of
@@ -95,9 +95,14 @@ with the following properties:
 The left-most character must be sorted first, and the right-most character sorted last (lexical order).
 The default ASCII character set must be used. Within the same millisecond, sort order is not guaranteed.
 }
+\details{
+Note that the current implementations has a limitation that results in
+second rather than millisecond resolution. See for example issue #13 at
+the upstream repo.
+}
 \examples{
 ULIDgenerate()
-unmarshal(ULIDgenerate())
+unmarshal(generate())
 ts_generate(as.POSIXct("2017-11-01 15:00:00", origin="1970-01-01"))
 }
 \seealso{
