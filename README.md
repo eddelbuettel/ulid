@@ -162,7 +162,8 @@ Chris Brove also collected in [his fork](https://github.com/ChrisBove/ulid) impr
 [Suyash Verma](https://github.com/suyash) wrote the C++ header library
 [ulid](https://github.com/suyash/ulid).
 
-[Chris Bove](https://github.com/ChrisBove) updated internals to permit sub-second resolution.
+[Chris Bove](https://github.com/ChrisBove) updated internals to permit sub-second resolution in his
+[fork](https://github.com/ChrisBove/ulid).
 
 [Bob Rudis](https://rud.is) created the R package, prepared versions 0.1.0 and 0.2.0, and released version 0.3.0 to CRAN.
 

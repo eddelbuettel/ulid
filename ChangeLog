@@ -1,10 +1,13 @@
 2024-05-31  Dirk Eddelbuettel  <edd@debian.org>
 
+	* DESCRIPTION (Version,Date): Roll micro version and date
+
 	* src/ulid/ulid_struct.h: Switch to fork by Chris Bove which uses
 	std::chrono internally thus providing millisecond resolutions
 	* src/ulid/ulid_uint128.h: Idem
 	* src/wrapper.cpp: Updated to use std::chrono instead of time_t
 
+	* README.md: Document updates
 
 2024-05-30  Dirk Eddelbuettel  <edd@debian.org>
 
