@@ -96,9 +96,9 @@ The left-most character must be sorted first, and the right-most character sorte
 The default ASCII character set must be used. Within the same millisecond, sort order is not guaranteed.
 }
 \details{
-Note that the current implementations has a limitation that results in
-second rather than millisecond resolution. See for example issue #13 at
-the upstream repo.
+Note that up until release 0.3.1, the implementations had limitations
+that resulted in second rather than millisecond resolution. This has
+been addressed for release 0.4.0 and is now supported as expected.
 }
 \examples{
 ULIDgenerate()

@@ -1,3 +1,14 @@
+2024-06-02  Dirk Eddelbuettel  <edd@debian.org>
+
+	* src/wrapper.cpp: Documentation update for millisecond resolution
+	* R/RcppExports.R: Idem
+	* man/ulid.Rd: Idem
+
+	* inst/tinytest/test_ulid.R: Added tests for millisecond resolution
+
+	* src/Makevars: Ensure C++17 compilatin for std::chrono
+	* src/Makevars.win: Idem
+
 2024-05-31  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version,Date): Roll micro version and date
@@ -19,7 +30,7 @@
 	* man/ulid.Rd: Idem
 	* src/RcppExports.cpp: Updated
 
-	* READNE.md: Add two badges
+	* README.md: Add two badges
 
 2024-04-02  Dirk Eddelbuettel  <edd@debian.org>
 
