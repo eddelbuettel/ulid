@@ -8,3 +8,4 @@ u
 df <- unmarshal(u)
 format(df$ts, "%Y-%m-%d %H:%M:%OS3")
 diff(df$ts)
+data.table::data.table(df)

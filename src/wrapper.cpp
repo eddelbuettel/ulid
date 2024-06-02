@@ -51,7 +51,11 @@ Rcpp::DataFrame unmarshal(std::vector<std::string> ulids) {
     std::vector<std::string> cv(sz);
     for (unsigned long i=0; i<sz; i++) {
         ulid::ULID u = ulid::Unmarshal(ulids[i]);
-        dt[i] = Rcpp::Datetime(ulid::Time(u));
+        // convert std::chrono object to a millisecond-resolution time point
+        auto tp = std::chrono::time_point_cast<std::chrono::milliseconds>(ulid::Time(u));
+        // scale to get POSIXct fractional seconds since epoch, at msec resolution
+        double d = tp.time_since_epoch().count() / 1000.0;
+        dt[i] = Rcpp::Datetime(d);
         cv[i] = ulids[i].substr(10);
     }
     Rcpp::DataFrame out = Rcpp::DataFrame::create(Rcpp::Named("ts") = dt,
@@ -77,8 +81,11 @@ Rcpp::CharacterVector ts_generate(Rcpp::DatetimeVector tsv) {
     Rcpp::CharacterVector c(tsv.size());
     for (long i=0; i<tsv.size(); i++) {
         ulid::ULID u = 0;
-        time_t t = static_cast<time_t>(tsv[i]);
-        ulid::EncodeTime(t, u);
+        //time_t t = static_cast<time_t>(tsv[i]);
+        std::chrono::duration<double> duration(tsv[i]);
+        auto dflr = std::chrono::round<std::chrono::microseconds>(duration);
+        auto tp = std::chrono::system_clock::from_time_t(time_t{0}) + dflr;
+        ulid::EncodeTime(tp, u);
         ulid::EncodeEntropyRand(u);
         c[i] = ulid::Marshal(u);
     }

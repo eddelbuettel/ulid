@@ -6,6 +6,7 @@
 [![CRAN](https://www.r-pkg.org/badges/version/ulid)](https://cran.r-project.org/package=ulid)
 [![r-universe](https://eddelbuettel.r-universe.dev/badges/ulid)](https://eddelbuettel.r-universe.dev/ulid)
 [![Dependencies](https://tinyverse.netlify.app/badge/ulid)](https://cran.r-project.org/package=ulid)
+[![Downloads](https://cranlogs.r-pkg.org/badges/ulid?color=brightgreen)](https://www.r-pkg.org:443/pkg/ulid)
 [![Last Commit](https://img.shields.io/github/last-commit/eddelbuettel/ulid)](https://github.com/eddelbuettel/ulid)
 
 
@@ -133,14 +134,36 @@ unmarshal(ut)
 ## 1 2017-11-01 15:00:00 2THKSAX3F1SF30E7
 ```
 
-### Known Limitation
+### Extensions
 
 As per [issue #13](https://github.com/suyash/ulid/issues/13) on the upstream repo, time is actually
-encoded mostly as `time_t` leading to second rather than millisecond resolution.
+encoded mostly as `time_t` leading to second rather than millisecond resolution. Two patches by
+Chris Brove also collected in [his fork](https://github.com/ChrisBove/ulid) improve on this by using
+`std::chrono` objects internally.  We have extended the wrapper functions to support this:
+
+```r
+> library(ulid)
+> gen_ulid <- \(sleep) replicate(5, {Sys.sleep(sleep); generate()})
+> u <- gen_ulid(.1)
+> df <- unmarshal(u)
+> data.table::data.table(df)
+                        ts              rnd
+                    <POSc>           <char>
+1: 2024-05-30 16:38:28.588 CSQAJBPNX75R0G5A
+2: 2024-05-30 16:38:28.688 XZX0TREDHD6PC1YR
+3: 2024-05-30 16:38:28.789 0YK9GKZVTED27QMK
+4: 2024-05-30 16:38:28.890 SC3M3G6KGPH7S50S
+5: 2024-05-30 16:38:28.990 TSKCBWJ3TEKCPBY0
+>
+```
 
 ### Author
 
-[Suyash Verma](https://github.com/suyash) wrote the C++ header library [ulid](https://github.com/suyash/ulid).
+[Suyash Verma](https://github.com/suyash) wrote the C++ header library
+[ulid](https://github.com/suyash/ulid).
+
+[Chris Bove](https://github.com/ChrisBove) updated internals to permit sub-second resolution in his
+[fork](https://github.com/ChrisBove/ulid).
 
 [Bob Rudis](https://rud.is) created the R package, prepared versions 0.1.0 and 0.2.0, and released version 0.3.0 to CRAN.
 
