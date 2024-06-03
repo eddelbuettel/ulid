@@ -1,3 +1,10 @@
+2024-06-03  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version,Date): Release 0.4.0
+
+	* README.md (ulid): Additional small edits
+	* src/wrapper.cpp: Additional tweaks
+
 2024-06-02  Dirk Eddelbuettel  <edd@debian.org>
 
 	* src/wrapper.cpp: Documentation update for millisecond resolution

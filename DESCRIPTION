@@ -1,8 +1,8 @@
 Package: ulid
 Type: Package
 Title: Generate Universally Unique 'Lexicographically' 'Sortable' Identifiers
-Version: 0.3.1.2
-Date: 2024-05-30
+Version: 0.4.0
+Date: 2024-06-03
 Authors@R: c(
   person("Bob", "Rudis", role = "aut", comment = c(ORCID = "0000-0001-5670-2640")),
   person("Suyash", "Verma", role = "aut", comment = "ULID C++ <https://github.com/suyash/ulid/>"),

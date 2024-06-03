@@ -3,6 +3,16 @@
 \newcommand{\ghpr}{\href{https://github.com/eddelbuettel/ulid/pull/#1}{##1}}
 \newcommand{\ghit}{\href{https://github.com/eddelbuettel/ulid/issues/#1}{##1}}
 
+\section{Changes in version 0.4.0 (2024-06-03)}{
+  \itemize{
+    \item Switch two functions to fork by Chris Bove using \code{std::chrono}
+    instead of \code{time_t} for consistent millisecond resolution (\ghpr{3}
+    fixing \ghit{2})
+    \item Updated documentation showing consistent millisecond functionality
+    \item Added unit tests for millisecond functionality
+  }
+}
+
 \section{Changes in version 0.3.1 (2024-04-02)}{
   \itemize{
     \item New Maintainer

@@ -134,12 +134,13 @@ unmarshal(ut)
 ## 1 2017-11-01 15:00:00 2THKSAX3F1SF30E7
 ```
 
-### Extensions
+### Millisecond Resolution
 
 As per [issue #13](https://github.com/suyash/ulid/issues/13) on the upstream repo, time is actually
 encoded mostly as `time_t` leading to second rather than millisecond resolution. Two patches by
 Chris Brove also collected in [his fork](https://github.com/ChrisBove/ulid) improve on this by using
-`std::chrono` objects internally.  We have extended the wrapper functions to support this:
+`std::chrono` objects internally.  In release 0.4.0, we have switches to his fork and extended the
+wrapper functions to support this:
 
 ```r
 > library(ulid)
@@ -167,7 +168,7 @@ Chris Brove also collected in [his fork](https://github.com/ChrisBove/ulid) impr
 
 [Bob Rudis](https://rud.is) created the R package, prepared versions 0.1.0 and 0.2.0, and released version 0.3.0 to CRAN.
 
-[Dirk Eddelbuettel](https://dirk.eddelbuettel.com) is the current maintainer.
+[Dirk Eddelbuettel](https://dirk.eddelbuettel.com) has been maintainer since release 0.3.1.
 
 ### License
 
