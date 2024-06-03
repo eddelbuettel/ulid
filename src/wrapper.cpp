@@ -46,15 +46,15 @@ Rcpp::CharacterVector generate(long n=1) {
 //' unmarshal(generate())
 // [[Rcpp::export]]
 Rcpp::DataFrame unmarshal(std::vector<std::string> ulids) {
-    unsigned long sz = ulids.size();
-    Rcpp::DatetimeVector dt(sz);
+    size_t sz = ulids.size();
+    Rcpp::DatetimeVector dt((int)sz);
     std::vector<std::string> cv(sz);
-    for (unsigned long i=0; i<sz; i++) {
+    for (size_t i=0; i<sz; i++) {
         ulid::ULID u = ulid::Unmarshal(ulids[i]);
         // convert std::chrono object to a millisecond-resolution time point
         auto tp = std::chrono::time_point_cast<std::chrono::milliseconds>(ulid::Time(u));
         // scale to get POSIXct fractional seconds since epoch, at msec resolution
-        double d = tp.time_since_epoch().count() / 1000.0;
+        double d = std::chrono::duration<double>(tp.time_since_epoch()).count();
         dt[i] = Rcpp::Datetime(d);
         cv[i] = ulids[i].substr(10);
     }
