@@ -50,13 +50,21 @@ Rcpp::DataFrame unmarshal(std::vector<std::string> ulids) {
     Rcpp::DatetimeVector dt((int)sz);
     std::vector<std::string> cv(sz);
     for (size_t i=0; i<sz; i++) {
-        ulid::ULID u = ulid::Unmarshal(ulids[i]);
-        // convert std::chrono object to a millisecond-resolution time point
-        auto tp = std::chrono::time_point_cast<std::chrono::milliseconds>(ulid::Time(u));
-        // scale to get POSIXct fractional seconds since epoch, at msec resolution
-        double d = std::chrono::duration<double>(tp.time_since_epoch()).count();
-        dt[i] = Rcpp::Datetime(d);
-        cv[i] = ulids[i].substr(10);
+        try {
+            // get the ulid out of the string passed in
+            ulid::ULID u = ulid::Unmarshal(ulids[i]);
+            // get a time_point from the ulid
+            std::chrono::time_point ut = ulid::Time(u);
+            // convert std::chrono object to a millisecond-resolution time point
+            auto tp = std::chrono::time_point_cast<std::chrono::milliseconds>(ut);
+            // scale to get POSIXct fractional seconds since epoch, at msec resolution
+            double d = std::chrono::duration<double>(tp.time_since_epoch()).count();
+            // and make that a standard POSIXct in R
+            dt[i] = Rcpp::Datetime(d);
+            cv[i] = ulids[i].substr(10);
+        } catch(...) {
+            Rcpp::stop("Cannot unmarshal '%s' which may not be a valid object.", ulids[i]);
+        }
     }
     Rcpp::DataFrame out = Rcpp::DataFrame::create(Rcpp::Named("ts") = dt,
                                                   Rcpp::Named("rnd") = cv);

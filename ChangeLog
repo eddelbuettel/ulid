@@ -1,3 +1,8 @@
+2024-07-01  Dirk Eddelbuettel  <edd@debian.org>
+
+	* src/wrapper.cpp (unmarshal): Wrap unmarshaling in try/catch
+	block to allow better error message if any
+
 2024-06-03  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version,Date): Release 0.4.0
