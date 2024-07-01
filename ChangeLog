@@ -1,5 +1,7 @@
 2024-07-01  Dirk Eddelbuettel  <edd@debian.org>
 
+	* DESCRIPTION (Version,Date): Roll micro version and date
+
 	* src/wrapper.cpp (unmarshal): Wrap unmarshaling in try/catch
 	block to allow better error message if any
 
@@ -18,7 +20,7 @@
 
 	* inst/tinytest/test_ulid.R: Added tests for millisecond resolution
 
-	* src/Makevars: Ensure C++17 compilatin for std::chrono
+	* src/Makevars: Ensure C++17 compilation for std::chrono
 	* src/Makevars.win: Idem
 
 2024-05-31  Dirk Eddelbuettel  <edd@debian.org>

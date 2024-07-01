@@ -1,12 +1,12 @@
 Package: ulid
 Type: Package
 Title: Generate Universally Unique 'Lexicographically' 'Sortable' Identifiers
-Version: 0.4.0
-Date: 2024-06-03
+Version: 0.4.0.1
+Date: 2024-07-01
 Authors@R: c(
   person("Bob", "Rudis", role = "aut", comment = c(ORCID = "0000-0001-5670-2640")),
   person("Suyash", "Verma", role = "aut", comment = "ULID C++ <https://github.com/suyash/ulid/>"),
-  person("Dirk", "Eddelbuettel", role = "cre", comment = c(ORCID = "0000-0001-6419-907X"),
+  person("Dirk", "Eddelbuettel", role = c("aut","cre"), comment = c(ORCID = "0000-0001-6419-907X"),
          email = "edd@debian.org"))
 Description: Universally unique identifiers ('UUIDs') can be sub-optimal for many
   uses-cases because they are not the most character efficient way of encoding
