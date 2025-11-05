@@ -3,6 +3,13 @@
 \newcommand{\ghpr}{\href{https://github.com/eddelbuettel/ulid/pull/#1}{##1}}
 \newcommand{\ghit}{\href{https://github.com/eddelbuettel/ulid/issues/#1}{##1}}
 
+\section{Changes in version 0.4.1 (2024-xx-yy)}{
+  \itemize{
+    \item Ensure better error message in \code{unmarshal} in case of user
+    error on input (Dirk fixing \ghit{4})
+  }
+}
+
 \section{Changes in version 0.4.0 (2024-06-03)}{
   \itemize{
     \item Switch two functions to fork by Chris Bove using \code{std::chrono}

@@ -139,7 +139,7 @@ unmarshal(ut)
 As per [issue #13](https://github.com/suyash/ulid/issues/13) on the upstream repo, time is actually
 encoded mostly as `time_t` leading to second rather than millisecond resolution. Two patches by
 Chris Brove also collected in [his fork](https://github.com/ChrisBove/ulid) improve on this by using
-`std::chrono` objects internally.  In release 0.4.0, we have switches to his fork and extended the
+`std::chrono` objects internally.  In release 0.4.0, we have switched to his fork and extended the
 wrapper functions to support this:
 
 ```r
@@ -168,7 +168,7 @@ wrapper functions to support this:
 
 [Bob Rudis](https://rud.is) created the R package, prepared versions 0.1.0 and 0.2.0, and released version 0.3.0 to CRAN.
 
-[Dirk Eddelbuettel](https://dirk.eddelbuettel.com) has been maintainer since release 0.3.1.
+[Dirk Eddelbuettel](https://dirk.eddelbuettel.com) has been the R package maintainer since release 0.3.1, and added sub-second support.
 
 ### License
 
