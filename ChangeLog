@@ -1,3 +1,15 @@
+2026-01-11  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version,Date): Roll micro version and date
+
+	* src/wrapper.cpp: New boolean predicate to test a ulid, plus small
+	documentation enhancements
+	* src/RcppExports.cpp: Regenerated
+	* R/RcppExports.R: Idem
+	* man/ulid.R: Idem
+	* NAMESPACE: Idem
+	* inst/tinytest/test_ulid.R: Added simple tests
+
 2025-11-05  Dirk Eddelbuettel  <edd@debian.org>
 
 	* .github/workflows/ci.yaml: Use r-ci with embedded bootstrap

@@ -6,6 +6,7 @@
 \alias{generate}
 \alias{unmarshal}
 \alias{ts_generate}
+\alias{is_ulid}
 \alias{ulid}
 \alias{ulid_generate}
 \alias{ULIDgenerate}
@@ -16,6 +17,8 @@ generate(n = 1L)
 unmarshal(ulids)
 
 ts_generate(tsv)
+
+is_ulid(s)
 
 ulid(n = 1L)
 
@@ -29,9 +32,15 @@ ULIDgenerate(n = 1L)
 \item{ulids}{character ULIDs (e.g. created with \code{generate()})}
 
 \item{tsv}{vector of \code{POSIXct} values}
+
+\item{s}{string with a ulid symbol}
 }
 \value{
-A \code{data.frame} with two columns \code{ts} and \code{rnd}.
+A vector with \code{n} character strings (for \code{generate()} and \code{ts_generate()})
+
+A \code{data.frame} with two columns \code{ts} and \code{rnd} (for \code{unmarshal()})
+
+A boolean result (for \code{is_ulid})
 }
 \description{
 \code{generate()} generates a new \href{https://github.com/ulid/spec}{Universally Unique Lexicographically Sortable Identifier}. Several aliases are
@@ -39,6 +48,10 @@ available for convience and backwards-compatibility.
 
 This function generates a new \href{https://github.com/ulid/spec}{Universally Unique Lexicographically Sortable Identifier} from a vector of
 \code{POSIXct} timestamps.
+
+Note that this validation leaves open other possible venues for being
+invalid: a future date for the time component, or a nonsensical date
+are two examples
 
 As described in the \href{https://github.com/ulid/spec}{ulid specification repo}, and slightly edited here,
 UUID use can be suboptimal for many uses-cases because:(grifted from \url{https://github.com/ulid/spec})
@@ -104,6 +117,7 @@ been addressed for release 0.4.0 and is now supported as expected.
 ULIDgenerate()
 unmarshal(generate())
 ts_generate(as.POSIXct("2017-11-01 15:00:00", origin="1970-01-01"))
+is_ulid(ULIDgenerate())
 }
 \seealso{
 The \href{https://github.com/ulid/spec}{ulid specification} provides the reference.

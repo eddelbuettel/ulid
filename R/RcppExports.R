@@ -13,6 +13,7 @@
 #'
 #' @md
 #' @param n number of id's to generate (default = `1`)
+#' @return A vector with `n` character strings (for `generate()` and `ts_generate()`)
 #' @rdname ulid
 #' @export
 #' @examples
@@ -27,7 +28,7 @@ generate <- function(n = 1L) {
 #' @param ulids character ULIDs (e.g. created with `generate()`)
 #' @export
 #' @rdname ulid
-#' @return A `data.frame` with two columns `ts` and `rnd`.
+#' @return A `data.frame` with two columns `ts` and `rnd` (for `unmarshal()`)
 #' @examples
 #' unmarshal(generate())
 unmarshal <- function(ulids) {
@@ -48,5 +49,22 @@ unmarshal <- function(ulids) {
 #' ts_generate(as.POSIXct("2017-11-01 15:00:00", origin="1970-01-01"))
 ts_generate <- function(tsv) {
     .Call(`_ulid_ts_generate`, tsv)
+}
+
+#' Validates a ULID heuristicall for length and Crockford Base32
+#'
+#' Note that this validation leaves open other possible venues for being
+#' invalid: a future date for the time component, or a nonsensical date
+#' are two examples
+#'
+#' @md
+#' @param s string with a ulid symbol
+#' @return A boolean result (for `is_ulid`)
+#' @rdname ulid
+#' @export
+#' @examples
+#' is_ulid(ULIDgenerate())
+is_ulid <- function(s) {
+    .Call(`_ulid_is_ulid`, s)
 }
 

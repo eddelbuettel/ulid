@@ -2,6 +2,7 @@
 
 export(ULIDgenerate)
 export(generate)
+export(is_ulid)
 export(ts_generate)
 export(ulid)
 export(ulid_generate)

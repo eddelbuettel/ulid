@@ -43,11 +43,23 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// is_ulid
+bool is_ulid(const std::string& s);
+RcppExport SEXP _ulid_is_ulid(SEXP sSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const std::string& >::type s(sSEXP);
+    rcpp_result_gen = Rcpp::wrap(is_ulid(s));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_ulid_generate", (DL_FUNC) &_ulid_generate, 1},
     {"_ulid_unmarshal", (DL_FUNC) &_ulid_unmarshal, 1},
     {"_ulid_ts_generate", (DL_FUNC) &_ulid_ts_generate, 1},
+    {"_ulid_is_ulid", (DL_FUNC) &_ulid_is_ulid, 1},
     {NULL, NULL, 0}
 };
 

@@ -21,6 +21,7 @@ inline long intrand() {
 //'
 //' @md
 //' @param n number of id's to generate (default = `1`)
+//' @return A vector with `n` character strings (for `generate()` and `ts_generate()`)
 //' @rdname ulid
 //' @export
 //' @examples
@@ -41,7 +42,7 @@ Rcpp::CharacterVector generate(long n=1) {
 //' @param ulids character ULIDs (e.g. created with `generate()`)
 //' @export
 //' @rdname ulid
-//' @return A `data.frame` with two columns `ts` and `rnd`.
+//' @return A `data.frame` with two columns `ts` and `rnd` (for `unmarshal()`)
 //' @examples
 //' unmarshal(generate())
 // [[Rcpp::export]]
@@ -98,4 +99,59 @@ Rcpp::CharacterVector ts_generate(Rcpp::DatetimeVector tsv) {
         c[i] = ulid::Marshal(u);
     }
     return(c);
+}
+
+
+// Checks if a character is a valid Crockford Base32 symbol (after normalization).
+// Normalization maps I, L to 1, O to 0. Hyphens are ignored in the input.
+static bool is_valid_Crockford_symbol(char c) {
+    // Normalize to uppercase for consistent checking
+    unsigned char uc = static_cast<unsigned char>(std::toupper(c));
+
+    // Valid symbols are 0-9 and A-Z, excluding I, L, O, U in their final form.
+
+    // We handle the I, L, O mapping during the check.
+    if (uc >= '0' && uc <= '9') return true;
+    if (uc >= 'A' && uc <= 'H') return true;
+    if (uc >= 'J' && uc <= 'N') return true;
+    if (uc >= 'P' && uc <= 'Z') return true;
+
+    // Check for "confusable" characters that map to valid ones
+    if (uc == 'I' || uc == 'L') return true; // Map to '1'
+    if (uc == 'O') return true;             // Map to '0'
+
+    // Hyphens are allowed and ignored
+    if (uc == '-') return true;
+
+    return false;
+}
+
+// Checks if the entire string conforms to the Base32 Crockford format rules.
+// Does not check the optional checksum.
+static bool is_base32_Crockford(const std::string& s) {
+    for (char c : s) {
+        // If any character is not a valid symbol or an ignored hyphen, the format is invalid
+        if (!is_valid_Crockford_symbol(c)) {
+            return false;
+        }
+    }
+    return true;
+}
+
+//' Validates a ULID heuristicall for length and Crockford Base32
+//'
+//' Note that this validation leaves open other possible venues for being
+//' invalid: a future date for the time component, or a nonsensical date
+//' are two examples
+//'
+//' @md
+//' @param s string with a ulid symbol
+//' @return A boolean result (for `is_ulid()`)
+//' @rdname ulid
+//' @export
+//' @examples
+//' is_ulid(ULIDgenerate())
+// [[Rcpp::export]]
+bool is_ulid(const std::string& s) {
+    return s.length() == 26 && is_base32_Crockford(s);
 }
