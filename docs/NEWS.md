@@ -1,0 +1,150 @@
+
+
+# News for Package <span class="pkg">ulid</span>
+
+## Changes in version 0.4.1 (2024-xx-yy)
+
+<ul>
+<li>
+
+Ensure better error message in <code>unmarshal</code> in case of user
+error on input (Dirk fixing
+<a href="https://github.com/eddelbuettel/ulid/issues/4">[#4](https://github.com/eddelbuettel/ulid/issues/4)</a>)
+
+</li>
+</ul>
+
+## Changes in version 0.4.0 (2024-06-03)
+
+<ul>
+<li>
+
+Switch two functions to fork by Chris Bove using
+<code>std::chrono</code> instead of <code>time_t</code> for consistent
+millisecond resolution
+(<a href="https://github.com/eddelbuettel/ulid/pull/3">[#3](https://github.com/eddelbuettel/ulid/issues/3)</a> fixing
+<a href="https://github.com/eddelbuettel/ulid/issues/2">[#2](https://github.com/eddelbuettel/ulid/issues/2)</a>)
+
+</li>
+<li>
+
+Updated documentation showing consistent millisecond functionality
+
+</li>
+<li>
+
+Added unit tests for millisecond functionality
+
+</li>
+</ul>
+
+## Changes in version 0.3.1 (2024-04-02)
+
+<ul>
+<li>
+
+New Maintainer
+
+</li>
+<li>
+
+Deleted several repository files no longer used or needed
+
+</li>
+<li>
+
+Added <code>.editorconfig</code>, <code>ChangeLog</code> and
+<code>cleanup</code>
+
+</li>
+<li>
+
+Converted NEWS.md to NEWS.Rd
+
+</li>
+<li>
+
+Simplified <code>R</code>/ directory to one source file
+
+</li>
+<li>
+
+Simplified <code>src/</code> removing redundant <code>Makevars</code>
+
+</li>
+<li>
+
+Added <code>ulid()</code> alias
+
+</li>
+<li>
+
+Updated / edited roxygen and README.md documention
+
+</li>
+<li>
+
+Removed vignette which was identical to README.md
+
+</li>
+<li>
+
+Switched continuous integration to GitHub Actions
+
+</li>
+<li>
+
+Placed upstream (header-only) library into <code>src/ulid/</code>
+
+</li>
+<li>
+
+Renamed single interface file to <code>src/wrapper</code>
+
+</li>
+</ul>
+
+## Changes in version 0.3.0 (2019-07-27)
+
+<ul>
+<li>
+
+Updated libary
+
+</li>
+<li>
+
+Uses R C random bits vs <code>std::rand()</code>
+
+</li>
+<li>
+
+Vignette
+
+</li>
+<li>
+
+Converted to <span class="pkg">tinytest</span>
+
+</li>
+</ul>
+
+## Changes in version 0.2.0 (2019-07-04)
+
+<ul>
+<li>
+
+Polished version
+
+</li>
+</ul>
+
+## Changes in version 0.1.0 (2018-12-28)
+
+<ul>
+<li>
+
+Initial release
+
+</li>
+</ul>

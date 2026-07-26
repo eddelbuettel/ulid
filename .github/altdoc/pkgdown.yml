@@ -1,0 +1,8 @@
+altdoc: 0.6.0.9000
+last_built: 2026-07-25T22:01:19+0000
+urls:
+  reference: https://eddelbuettel.github.io/ulid/man
+  article: https://eddelbuettel.github.io/ulid/vignettes
+pandoc: 3.1.3
+pkgdown: 2.1.3
+pkgdown_sha: ~
