@@ -1,3 +1,14 @@
+2026-07-27  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (URL): Add documentation website
+	* README.md: Add badge
+
+2026-07-26  Dirk Eddelbuettel  <edd@debian.org>
+
+	* docs/: Added using 'altdoc' and 'material for mkdocs'
+	* .github/altdoc/*: Added supporting 'altdoc'
+	* .github/scripts/postprocess.sh: Idem
+
 2026-02-25  Dirk Eddelbuettel  <edd@debian.org>
 
 	* .github/workflows/ci.yaml: Switch to actions/checkout@v6

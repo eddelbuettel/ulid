@@ -8,6 +8,7 @@
 [![Dependencies](https://tinyverse.netlify.app/badge/ulid)](https://cran.r-project.org/package=ulid)
 [![Downloads](https://cranlogs.r-pkg.org/badges/ulid?color=brightgreen)](https://www.r-pkg.org:443/pkg/ulid)
 [![Last Commit](https://img.shields.io/github/last-commit/eddelbuettel/ulid)](https://github.com/eddelbuettel/ulid)
+[![Documentation](https://img.shields.io/badge/documentation-is_here-blue)](https://eddelbuettel.github.io/ulid/)
 
 
 ### Description

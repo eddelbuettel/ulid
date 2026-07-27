@@ -21,7 +21,7 @@ Description: Universally unique identifiers ('UUIDs') can be sub-optimal for man
   encoding for better efficiency and readability (5 bits per character), are case
   insensitive, have no special characters (i.e. are 'URL' safe) and have a monotonic
   sort order (correctly detects and handles the same millisecond).
-URL: https://github.com/eddelbuettel/ulid
+URL: https://eddelbuettel.github.io/ulid/, https://github.com/eddelbuettel/ulid
 BugReports: https://github.com/eddelbuettel/ulid/issues
 NeedsCompilation: yes
 Encoding: UTF-8
